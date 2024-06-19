@@ -10,7 +10,7 @@ tabuleiro([[[1,2],[1,_],[2,_],[2,_],[2,1],[3,_]],
             [[9,_],[9,_],[10,_],[10,_],[0,_],[0,_]]]).
 
 
-/* Tamanho de cada regiao (grupo, tamanho) */
+/* Tamanho de cada grupo (grupo, tamanho) */
 grupo_quantidade(0,5).
 grupo_quantidade(1,2).
 grupo_quantidade(2,3).
@@ -29,7 +29,7 @@ solver(Desafio) :-
     /* Concatena todas as listas do tabuleiro em uma única lista. */
     append(Desafio, Lista),
     /* Define o valor máximo para cada célula com base no grupo (valor definido na função grupo_quantidade). */
-    maplist(valor_maximo_regiao, Lista),
+    maplist(valor_maximo_grupo, Lista),
     /* Verifica que os valores em cada linha são diferentes dos seus vizinhos. */
     maplist(vizinhos_diferentes, Desafio),
     /* Transpõe o tabuleiro para verificar as colunas. */
@@ -53,11 +53,11 @@ solver(Desafio) :-
     /* Cria uma lista de grupos para verificação. */
     Grupos = [Grupo0,Grupo1,Grupo2,Grupo3,Grupo4,Grupo5,Grupo6,Grupo7,Grupo8,Grupo9,Grupo10], 
     /* Verifica que todos os valores em cada grupo são distintos. */
-    todos_diferentes_regiao(Grupos), !.
+    todos_diferentes_grupo(Grupos), !.
 
 
 /* Define o valor máximo que os valores de cada grupo podem assumir, com base no tamanho do grupo. */
-valor_maximo_regiao([R,X]) :- grupo_quantidade(R,T), X in 1..T.
+valor_maximo_grupo([R,X]) :- grupo_quantidade(R,T), X in 1..T.
 
 
 /* Verifica se o vizinho a direita eh diferente, de forma recursiva */
@@ -80,11 +80,11 @@ agrupa(R, [[R1, _] | T], L) :- R #\= R1, agrupa(R, T, L).
 
 
 /* Verifica se os membros de uma lista sao diferentes */
-todos_diferentes_regiao([H]) :-
+todos_diferentes_grupo([H]) :-
     all_distinct(H).
-todos_diferentes_regiao([H|T]) :-
+todos_diferentes_grupo([H|T]) :-
     all_distinct(H),
-    todos_diferentes_regiao(T).
+    todos_diferentes_grupo(T).
 
 
 /* Extrai a solução do tabuleiro, preenchendo os valores não definidos. */
