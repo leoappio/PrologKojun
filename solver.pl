@@ -1,16 +1,58 @@
 :- use_module(library(clpfd)).
 
 
+
 /* Definição do tabuleiro inicial com grupos e posições vazias*/
+/*
 tabuleiro([[[1,2],[1,_],[2,_],[2,_],[2,1],[3,_]],
             [[4,_],[4,_],[4,_],[4 ,3],[4,_],[3,_]],
             [[5,_],[6,3],[6,_],[6,_],[4,5],[7,3]],
             [[5,_],[5,_],[5,_],[6,_],[7,_],[7,_]],
             [[8,_],[8,_],[10,3],[0,_],[0,4],[0,2]],
             [[9,_],[9,_],[10,_],[10,_],[0,_],[0,_]]]).
+*/
+
+
+tabuleiro([
+    [[1,5], [2,_], [2,2], [2,_], [3,2], [3,_], [3,3], [3,1], [4,3], [4,1]],
+    [[1,_], [1,4], [1,_], [2,1], [6,_], [6,5], [7,_], [7,5], [4,_], [7,4]],
+    [[5,7], [5,5], [1,1], [6,7], [6,_], [8,_], [9,3], [7,1], [7,3], [7,_]],
+    [[5,_], [5,4], [6,_], [6,_], [12,4],[8,_], [9,_], [9,_], [9,_], [10,3]],
+    [[5,2], [5,_], [5,3], [6,4], [12,3],[12,2],[11,_],[10,_],[10,4],[10,_]],
+    [[13,5],[13,6],[15,2],[15,_],[15,6],[12,_],[19,_],[19,_],[18,2],[18,_]],
+    [[13,4],[13,1],[13,3],[15,4],[15,1],[16,3],[22,_],[20,4],[18,_],[18,3]],
+    [[14,6],[14,7],[13,2],[15,3],[16,_],[16,1],[22,4],[20,_],[23,_],[23,1]],
+    [[14,4],[14,2],[17,3],[17,5],[17,4],[17,_],[22,_],[20,2],[20,1],[21,3]],
+    [[14,3],[14,1],[14,5],[17,2],[17,1],[17,6],[22,2],[22,1],[21,2],[21,1]]]).
+
+
+grupo_quantidade(1,5).
+grupo_quantidade(2,4).
+grupo_quantidade(3,4).
+grupo_quantidade(4,3).
+grupo_quantidade(5,7).
+grupo_quantidade(6,7).
+grupo_quantidade(7,6).
+grupo_quantidade(8,2).
+grupo_quantidade(9,4).
+grupo_quantidade(10,4).
+grupo_quantidade(11,1).
+grupo_quantidade(12,4).
+grupo_quantidade(13,6).
+grupo_quantidade(14,7).
+grupo_quantidade(15,6).
+grupo_quantidade(16,3).
+grupo_quantidade(17,7).
+grupo_quantidade(18,4).
+grupo_quantidade(19,2).
+grupo_quantidade(20,4).
+grupo_quantidade(21,3).
+grupo_quantidade(22,5).
+grupo_quantidade(23,2).
 
 
 /* Tamanho de cada grupo (grupo, tamanho) */
+/*
 grupo_quantidade(0,5).
 grupo_quantidade(1,2).
 grupo_quantidade(2,3).
@@ -22,6 +64,7 @@ grupo_quantidade(7,3).
 grupo_quantidade(8,2).
 grupo_quantidade(9,2).
 grupo_quantidade(10,3).
+*/
 
 
 /* Função principal que resolve o Kojun. */
